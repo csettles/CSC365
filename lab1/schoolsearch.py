@@ -90,6 +90,7 @@ if __name__ == '__main__':
             try:
                 i = int(command[1])
             except:
+                print("Invalid command.")
                 continue
 
             search_bus(students, i)
@@ -98,6 +99,7 @@ if __name__ == '__main__':
             try:
                 i = int(command[1])
             except:
+                print("Invalid command.")
                 continue
             if len(command) == 3:
                 if command[2] in ("High", "H"):
@@ -113,6 +115,7 @@ if __name__ == '__main__':
             try:
                 i = int(command[1])
             except:
+                print("Invalid command.")
                 continue
             search_average(students, i)
 
