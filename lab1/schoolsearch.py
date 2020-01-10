@@ -1,3 +1,4 @@
+#Caitlin Settles and Ty Farris
 import statistics
 
 class Student:
@@ -26,8 +27,8 @@ def parse_file(file_name):
 def search_lastname(students, last_name, bus=False):
     def print_student(x):
         if bus:
-            return f'\t{x.last_name}, {x.first_name}: bus={x.bus}'
-        return f'\t{x.last_name}, {x.first_name}'
+            return f'\t{x.last_name}, {x.first_name}, {x.bus}'
+        return f'\t{x.last_name}, {x.first_name}, {x.grade}, {x.classroom}, {x.teacher_last_name}, {x.teacher_first_name}'
     
     print(*(print_student(x) for x in
             filter(lambda x: x.last_name == last_name, students)), sep = '\n')
@@ -37,20 +38,22 @@ def search_teacher(students, teacher_last_name):
     print(*filter(lambda x: x.teacher_last_name == teacher_last_name, students), sep="\n\t")
 
 def search_grade(students, grade, high=None):
-    result = filter(lambda x: x.grade == grade, students)
-    if high != None and high:
+
+    result = [x for x in students if x.grade == grade]
+
+    if  len(result) != 0 and high != None and high:
         result = max(result, key=lambda x: x.gpa)
-        print(f'\t{result}: gpa={result.gpa} teacher={result.teacher_last_name}, {result.teacher_first_name}')
-    elif high != None and not high:
+        print(f'\t{result}: {result.bus}, {result.gpa}, {result.teacher_last_name}, {result.teacher_first_name}')
+    elif len(result) != 0 and high != None and not high:
         result = min(result, key=lambda x: x.gpa)
-        print(f'\t{result}: gpa={result.gpa} teacher={result.teacher_last_name}, {result.teacher_first_name}')
+        print(f'\t{result}: {result.bus}, {result.gpa}, {result.teacher_last_name}, {result.teacher_first_name}')
     else:
         print('\t', end='')
         print(*result, sep="\n\t")
 
 def search_bus(students, bus):
     print('\t', end='')
-    print(*(f'{x}: grade={x.grade} classroom={x.classroom}' for x in filter(lambda x: x.bus == bus, students)), sep="\n\t")
+    print(*(f'{x}: {x.grade}, {x.classroom}' for x in filter(lambda x: x.bus == bus, students)), sep="\n\t")
 
 def search_average(students, grade):
     average = 0.0
@@ -61,8 +64,21 @@ def search_average(students, grade):
     print(f'\tgrade level {grade}: {average:.3} average')
 
 def info(students):
+    print("    Grade: Number of Students")
     for i in range(7):
         print(f'\t{i}:', len(list(filter(lambda x: x.grade == i, students))))
+
+def invalidCommand():
+    options = """ 
+    S[tudent]: <lastname> [B[us]]\n
+    T[eacher]: <lastname>\n
+    B[us]: <number>\n
+    G[rade]: <number> [H[igh]|L[ow]]\n
+    A[verage]: <number>\n
+    I[nfo]\n
+    Q[uit]
+    """
+    print("Invalid command. Below are the following options.\n %s" %options)
 
 if __name__ == '__main__':
     try:
@@ -81,16 +97,16 @@ if __name__ == '__main__':
             elif len(command) == 3 and command[2] in ("B", "Bus"):
                 search_lastname(students, command[1], True)
             else:
-                print("Invalid command.")
+                invalidCommand()
 
-        elif len(command) <= 2 and command[0] in ("Teacher:", "T:"):
+        elif len(command) == 2 and command[0] in ("Teacher:", "T:"):
             search_teacher(students, command[1])
 
-        elif len(command) <= 2 and command[0] in ("Bus:", "B:"):
+        elif len(command) == 2 and command[0] in ("Bus:", "B:"):
             try:
                 i = int(command[1])
             except:
-                print("Invalid command.")
+                invalidCommand()
                 continue
 
             search_bus(students, i)
@@ -99,7 +115,7 @@ if __name__ == '__main__':
             try:
                 i = int(command[1])
             except:
-                print("Invalid command.")
+                invalidCommand()
                 continue
             if len(command) == 3:
                 if command[2] in ("High", "H"):
@@ -107,7 +123,7 @@ if __name__ == '__main__':
                 elif command[2] in ("Low", "L"):
                     search_grade(students, i, False)
                 else:
-                    print("Invalid command.")
+                    invalidCommand()
             else:
                 search_grade(students, i)
 
@@ -115,7 +131,7 @@ if __name__ == '__main__':
             try:
                 i = int(command[1])
             except:
-                print("Invalid command.")
+                invalidCommand()
                 continue
             search_average(students, i)
 
@@ -126,4 +142,4 @@ if __name__ == '__main__':
             exit()
 
         else:
-            print("Invalid command.")
+            invalidCommand()
