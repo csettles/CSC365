@@ -1,0 +1,483 @@
+#CSC 365. Winter 2020
+#Lab 1-1 Test Suite
+#Caitlin Settles and Ty Farris
+
+#Delete at one point
+#StLastName, StFirstName, Grade, Classroom, Bus, GPA, TLastName, TFirstName
+
+#TC-1
+#Test Requirements R4
+#short form command name, nonexisting student
+#Expected Output:
+
+S: Bob
+
+#TC-2
+#Test Requirements R4
+#short form command name, first name of existing student
+#Expected Output:
+
+S: NOEL
+
+#TC-3
+#Test Requirements R4
+#short form command name, wrong input
+#Expected Output:
+
+S: 1234
+
+#TC-4
+#Test Requirements R4
+#short form command name, existing student
+#Expected Output: ELHADDAD, SHANTE, 3, 107, FAFARD, ROCIO
+
+S: ELHADDAD
+
+#TC-5
+#Test Requirements R4
+#long form command name, existing student
+#Expected Output: MULGREW, RANDELL, 2, 108, HAMER, GAVIN
+
+Student: MULGREW
+
+#TC-6
+#Test Requirements R5
+#short form command name, nonexisting student
+#Expected Output:
+
+S: Bob B
+
+#TC-7
+#Test Requirements R5
+#short form command name, wrong input
+#Expected Output: Invalid command. Below are the following options.
+    #S[tudent]: <lastname> [B[us]]
+    #T[eacher]: <lastname>
+    #B[us]: <number>
+    #G[rade]: <number> [H[igh]|L[ow]]
+    #A[verage]: <number>
+    #I[nfo]
+    #Q[uit]
+
+S: MULGREW 123
+
+#TC-8
+#Test Requirements R5
+#short form command name, existing student
+#Expected Output: KEMERER, ROSETTA, 52
+
+S: KEMERER B
+
+#TC-9
+#Test Requirements R5
+#long form command name, existing student
+#Expected Output: WERST, LEON, 55
+
+Student: WERST B
+
+#TC-10
+#Test Requirements R5
+#long form command name, existing student
+#Expected Output: WERST, LEON, 55
+
+Student: WERST Bus
+
+#TC-11
+#Test Requirements R5
+#short form command name, existing student
+#Expected Output: WERST, LEON, 55
+
+S: WERST Bus
+
+#TC-1
+#Test Requirements R5
+#short form command name, first name of existing student
+#Expected Output:
+
+S: ALONZO Bus
+
+#TC-12
+#Test Requirements R6
+#short form command name, nonexisting student
+#Expected Output: 
+
+T: George
+
+#TC-13
+#Test Requirements R6
+#long form command name, first name of existing teacher
+#Expected Output: 	
+
+Teacher: ELLIOTT
+
+#TC-14
+#Test Requirements R6
+#long form command name, wrong input
+#Expected Output: Invalid command. Below are the following options.
+    #S[tudent]: <lastname> [B[us]]
+    #T[eacher]: <lastname>
+    #B[us]: <number>
+    #G[rade]: <number> [H[igh]|L[ow]]
+    #A[verage]: <number>
+    #I[nfo]
+    #Q[uit]
+
+Teacher: ""
+
+#TC-15
+#Test Requirements R6
+#long form command name, wrong input
+#Expected Output: Invalid command. Below are the following options.
+    #S[tudent]: <lastname> [B[us]]
+    #T[eacher]: <lastname>
+    #B[us]: <number>
+    #G[rade]: <number> [H[igh]|L[ow]]
+    #A[verage]: <number>
+    #I[nfo]
+    #Q[uit]
+
+Teacher:
+
+#TC-16
+#Test Requirements R6
+#short form command name, existing teacher
+#Expected Output:	WORBINGTON, DEEDRA
+#					SPANICEK, KENDRA
+#					GUICE, CODI
+#					GLOR, HUNG
+#					GUM, NOAH
+#					NOVICK, ROLLAND
+#					DELUNA, KRYSTAL
+#					COMO, ZANDRA
+
+T: CHIONCHIO
+
+#TC-17
+#Test Requirements R6
+#long form command name, existing teacher
+#Expected Output: 	BRODERSEN, HYE
+#					THEUNISSEN, GRACE
+	
+Teacher: ALPERT
+
+#TC-18
+#Test Requirements R7
+#short form command name, invalid grade
+#Expected Output: Invalid command. Below are the following options.
+    #S[tudent]: <lastname> [B[us]]
+    #T[eacher]: <lastname>
+    #B[us]: <number>
+    #G[rade]: <number> [H[igh]|L[ow]]
+    #A[verage]: <number>
+    #I[nfo]
+    #Q[uit]
+	
+G: 1.2
+
+#TC-19
+#Test Requirements R7
+#long form command name, out of range grade
+#Expected Output: 
+	
+Grade: 10
+
+#TC-20
+#Test Requirements R7
+#long form command name, invalid command
+#Expected Output: Invalid command. Below are the following options.
+    #S[tudent]: <lastname> [B[us]]
+    #T[eacher]: <lastname>
+    #B[us]: <number>
+    #G[rade]: <number> [H[igh]|L[ow]]
+    #A[verage]: <number>
+    #I[nfo]
+    #Q[uit]
+	
+Grade: George
+
+#TC-21
+#Test Requirements R7
+#long form command name, existing grade
+#Expected Output: 	SAELEE, DANILO
+#					GARTH, JOHN
+	
+Grade: 1
+
+#TC-22
+#Test Requirements R7
+#short form command name, existing grade
+#Expected Output: 	COOKUS, XUAN
+#					ELHADDAD, SHANTE
+#					BRODERSEN, HYE
+#					SWEDLUND, SHARRI
+#					CIGANEK, MANIE
+#					COVINGTON, TOMAS
+#					EARLY, TORY
+#					LINHART, LELA
+#					THEUNISSEN, GRACE
+	
+G: 3
+
+#TC-23
+#Test Requirements R8
+#short form command name, nonexisting bus number
+#Expected Output:
+
+B: 12348
+
+#TC-24
+#Test Requirements R8
+#short form command name, invalid command
+#Expected Output: Invalid command. Below are the following options.
+    #S[tudent]: <lastname> [B[us]]
+    #T[eacher]: <lastname>
+    #B[us]: <number>
+    #G[rade]: <number> [H[igh]|L[ow]]
+    #A[verage]: <number>
+    #I[nfo]
+    #Q[uit]
+
+B: Hello
+
+
+#TC-25
+#Test Requirements R8
+#long form command name, invalid command
+#Expected Output: Invalid command. Below are the following options.
+    #S[tudent]: <lastname> [B[us]]
+    #T[eacher]: <lastname>
+    #B[us]: <number>
+    #G[rade]: <number> [H[igh]|L[ow]]
+    #A[verage]: <number>
+    #I[nfo]
+    #Q[uit]
+
+Bus: 
+
+#TC-26
+#Test Requirements R8
+#short form command name, existing bus
+#Expected Output: RACANELLO, NOEL: 6, 102
+#					VILARDO, EMMANUEL: 2, 104
+#					KRAKE, VALENTIN: 6, 109
+#					BEAN, INGER: 6, 111
+#					BUSSMANN, BILLY: 2, 108
+#					FEYEREISEN, WILFREDO: 6, 111
+
+B: 56
+
+#TC-27
+#Test Requirements R8
+#long form command name, existing bus
+#Expected Output: WOOLERY, NOLAN: 2, 104
+#					STERBACK, PETER: 6, 111
+#					LIBRANDI, TODD: 2, 108
+#					RAPOSE, ALONZO: 4, 105
+#					COVINGTON, TOMAS: 3, 107
+#					MULLINGS, LEIGHANN: 2, 108
+#					DURAND, CARLEE: 4, 101
+#					FRIEDSTROM, REED: 6, 106
+
+
+Bus: 51
+
+#TC-28
+#Test Requirements R9
+#short form command name, nonexisting grade
+#Expected Output:
+
+G: 12348 H
+
+#TC-29
+#Test Requirements R9
+#short form command name, existing grade where no student matches
+#Expected Output:
+
+G: 0 H
+
+#TC-30
+#Test Requirements R9
+#long form command name, existing grade where no student matches
+#Expected Output:
+
+Grade: 5 H
+
+#TC-31
+#Test Requirements R9
+#long form command name, nonexisting grade
+#Expected Output:
+
+Grade: -123 L
+
+#TC-32
+#Test Requirements R9
+#short form command name, existing grade where no student matches
+#Expected Output:
+
+G: 0 L
+
+#TC-33
+#Test Requirements R9
+#short form command name, existing grade where no student matches
+#Expected Output: SAELEE, DANILO, 54, 2.85, FALKER, ADOLPH
+
+G: 1 L
+
+#TC-34
+#Test Requirements R9
+#short form command name, existing grade where no student matches
+#Expected Output: GARTH, JOHN: 0, 3.14, FALKER, ADOLPH
+
+G: 1 H
+
+#TC-35
+#Test Requirements R9
+#short form command name, existing grade where no student matches
+#Expected Output: SWEDLUND, SHARRI: 55, 3.24, FAFARD, ROCIO
+
+G: 3 H
+
+#TC-36
+#Test Requirements R10
+#short form command name, wrong input
+#Expected Output: Invalid command. Below are the following options.
+    #S[tudent]: <lastname> [B[us]]
+    #T[eacher]: <lastname>
+    #B[us]: <number>
+    #G[rade]: <number> [H[igh]|L[ow]]
+    #A[verage]: <number>
+    #I[nfo]
+    #Q[uit]
+
+A: F
+
+#TC-37
+#Test Requirements R10
+#short form command name, invalid grade level
+#Expected Output: grade level -1: 0.0 average
+
+A: -1
+
+#TC-38
+#Test Requirements R10
+#long form command name, invalid grade level
+#Expected Output: grade level 10: 0.0 average
+
+Average: 10
+
+#TC-39
+#Test Requirements R10
+#long form command name, grade level with no students
+#Expected Output: grade level 0: 0.0 average
+
+Average: 0
+
+#TC-40
+#Test Requirements R10
+#long form command name, existing grade level
+#Expected Output: grade level 1: 3.0 average
+
+Average: 1
+
+#TC-41
+#Test Requirements R10
+#long form command name, existing grade level
+#Expected Output: grade level 3: 3.05 average
+
+Average: 3
+
+#TC-42
+#Test Requirements R10
+#short form command name, invalid command
+#Expected Output: Invalid command. Below are the following options.
+    #S[tudent]: <lastname> [B[us]]
+    #T[eacher]: <lastname>
+    #B[us]: <number>
+    #G[rade]: <number> [H[igh]|L[ow]]
+    #A[verage]: <number>
+    #I[nfo]
+    #Q[uit]
+
+I: 123
+
+#TC-43
+#Test Requirements R10
+#long form command name, invalid command
+#Expected Output: Invalid command. Below are the following options.
+    #S[tudent]: <lastname> [B[us]]
+    #T[eacher]: <lastname>
+    #B[us]: <number>
+    #G[rade]: <number> [H[igh]|L[ow]]
+    #A[verage]: <number>
+    #I[nfo]
+    #Q[uit]
+
+Info
+
+#TC-44
+#Test Requirements R11
+#long form command name
+#Expected Output: Grade: Number of Students
+#                        0: 0
+#                        1: 2
+#                        2: 13
+#                        3: 9
+#                        4: 15
+#                        5: 0
+#                        6: 21
+
+Info
+
+#TC-45
+#Test Requirements R11
+#short form command name
+#Expected Output: Grade: Number of Students
+#                        0: 0
+#                        1: 2
+#                        2: 13
+#                        3: 9
+#                        4: 15
+#                        5: 0
+#                        6: 21
+
+I
+
+#TC-46
+#Test Requirements R12
+#short form command name, invalid command
+#Expected Output: Invalid command. Below are the following options.
+    #S[tudent]: <lastname> [B[us]]
+    #T[eacher]: <lastname>
+    #B[us]: <number>
+    #G[rade]: <number> [H[igh]|L[ow]]
+    #A[verage]: <number>
+    #I[nfo]
+    #Q[uit]
+Q: 1
+
+#TC-47
+#Test Requirements R12
+#short form command name, invalid command
+#Expected Output: Invalid command. Below are the following options.
+    #S[tudent]: <lastname> [B[us]]
+    #T[eacher]: <lastname>
+    #B[us]: <number>
+    #G[rade]: <number> [H[igh]|L[ow]]
+    #A[verage]: <number>
+    #I[nfo]
+    #Q[uit]
+Q:
+
+#TC-48
+#Test Requirements R12
+#long form command name, existing grade level
+#Expected Output:
+
+Quit
+
+#TC-49
+#Test Requirements R12
+#short form command name, existing grade level
+#Expected Output:
+
+Q
