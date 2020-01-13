@@ -1,5 +1,6 @@
 #Caitlin Settles and Ty Farris
 import statistics
+import sys
 
 class Student:
     def __init__(self, last_name, first_name, grade, classroom,
@@ -89,7 +90,12 @@ if __name__ == '__main__':
     command = [""]
 
     while command[0] not in ("Quit", "Q"):
-        command = input("Enter a command >> ").split(" ")
+        query = input("")
+        command = query.split("Enter in command >> ")
+        if any('#' in x for x in command) or (len(command) == 1 and not command[0].strip()):
+            continue
+        else:
+            print(query)
 
         if len(command) <= 3 and command[0] in ("Student:", "S:"):
             if len(command) == 2:
