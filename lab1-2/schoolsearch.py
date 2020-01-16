@@ -17,6 +17,12 @@ class Student:
     def __repr__(self):
         return f'{self.last_name}, {self.first_name}'
 
+class Teacher:
+    def __init(self, last_name, first_name, classroom):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.classroom = classroom
+
 def parse_file(file_name):
     students = []
     with open(file_name) as f:
@@ -24,6 +30,33 @@ def parse_file(file_name):
             data = line.split(',')
             students.append(Student(*data))
     return students
+
+#NR1
+def search_classroom(class_num):
+    print('\t', end='')
+    print(*(x for x in filter(lambda x: x.classroom == class_num, students)), sep = "\n\t")
+
+#NR2
+def search_teacher_classroom(class_num):
+    print('\t', end='')
+    print(*(x for x in filter(lambda x: x.classroom == class_num, teachers)), sep = "\n\t")
+
+#NR3
+def search_teacher_grade(grade):
+    print('\t', end='')
+    print(*(x for x in filter(lambda x: x.grade == grade, teachers)), sep = "\n\t")
+
+#NR4
+def search_enrollments():
+
+    for t in teachers:
+        int count = 0
+        for s in students:
+            if t.classroom == s.classroom:
+                count++;
+    print('\t', end='')  
+    print(f'\t{t.classroom}:{count}')     
+
 
 def search_lastname(students, last_name, bus=False):
     def print_student(x):
@@ -146,6 +179,8 @@ if __name__ == '__main__':
 
         elif len(command) == 1 and command[0] in ("Quit", "Q"):
             exit()
+        elif len(command) == 2 and command[0] in ("Classroom", "C"):
+            search_classroom(command[1])
 
         else:
             invalidCommand()
