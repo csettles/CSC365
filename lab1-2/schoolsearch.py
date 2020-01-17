@@ -4,15 +4,15 @@ import sys
 
 class Student:
     def __init__(self, last_name, first_name, grade, classroom,
-                 bus, gpa, teacher_last_name, teacher_first_name):
+                 bus, gpa):
         self.first_name = first_name
         self.last_name = last_name
         self.grade = int(grade)
-        self.gpa = float(gpa)
         self.classroom = int(classroom)
         self.bus = int(bus)
-        self.teacher_first_name = teacher_first_name.strip()
-        self.teacher_last_name = teacher_last_name
+        self.gpa = float(gpa.strip())
+        
+        
 
     def __repr__(self):
         return f'{self.last_name}, {self.first_name}'
@@ -21,7 +21,7 @@ class Teacher:
     def __init(self, last_name, first_name, classroom):
         self.first_name = first_name
         self.last_name = last_name
-        self.classroom = classroom
+        self.classroom = int(classroom.strip())
 
 def parse_file(file_name):
     students = []
@@ -60,19 +60,35 @@ def search_enrollments():
 #commmand == 1 then grade level of student
 #command == 2 then teacher teaching the student
 #command == 3 then bus route student is on
-def search_gpa_performance(command, value):
-    def print_performance(x):
-        return f'\t{x.last_name}, {x.first_name}, {x.gpa}'
-    
+def search_gpa_performance(command): 
     if command == 1:
-        print(*(print_performance(x) for x in
-            filter(lambda x: x.grade == value, students)), sep = '\n')
+        for i in range(7):
+            data = map(lambda x: x.gpa, filter(lambda x: x.grade == i, students))
+            analyze_gpa(data)
     if command == 2:
-        print(*(print_performance(x) for x in
-            filter(lambda x: x.teacher == value, teachers)), sep = '\n')
+        classes = set(map(lambda x: x.classroom, teachers))
+        for c in classes:
+            data = append(map(lambda x: x.gpa, filter(lambda x: x.classroom == c, students)))
+            analyze_gpa(data)
     if command == 3:
-        print(*(print_performance(x) for x in
-            filter(lambda x: x.bus == value, students)), sep = '\n')
+        bus = set(map(lambda x: x.bus, students))
+        for b in bus:
+            data = map(lambda x: x.gpa, filter(lambda x: x.bus == b, students))
+            analyze_gpa(data)
+
+def analyze_gpa(data):
+    def print_gpa(mean, median, mode):
+        print(f'\tmean: {mean}')
+        print(f'\tmedian: {median}')
+        print(f'\tmode: {mode}')
+
+    if len(data) == 0:
+        print_gpa(0, 0, 0)
+    else:
+        mean = statistics.mean(data)
+        median = statistics.median(data)
+        mode = statistics.mode(data)
+        print_gpa(mean, median, mode)
 
 
 def search_lastname(students, last_name, bus=False):
@@ -129,13 +145,14 @@ def invalidCommand():
     I[nfo]\n
     Q[uit]
     """
-    print("Invalid command. Below are the following options.\n %s" %options)
+    print("Invalid command. Below are the following options.\n %s" % options)
 
 if __name__ == '__main__':
     try:
-        students = parse_file('students.txt')
+        students = parse_file('list.txt')
+        teachers = parse_file('teachers.txt')
     except:
-        exit("students.txt: unrecognized file format")
+        exit("unrecognized file format")
 
     command = [""]
 
