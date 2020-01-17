@@ -48,14 +48,31 @@ def search_teacher_grade(grade):
 
 #NR4
 def search_enrollments():
-
     for t in teachers:
-        int count = 0
+        count = 0
         for s in students:
             if t.classroom == s.classroom:
-                count++;
+                count++
     print('\t', end='')  
     print(f'\t{t.classroom}:{count}')     
+
+#NR5
+#commmand == 1 then grade level of student
+#command == 2 then teacher teaching the student
+#command == 3 then bus route student is on
+def search_gpa_performance(command, value):
+    def print_performance(x):
+        return f'\t{x.last_name}, {x.first_name}, {x.gpa}'
+    
+    if command == 1:
+        print(*(print_performance(x) for x in
+            filter(lambda x: x.grade == value, students)), sep = '\n')
+    if command == 2:
+        print(*(print_performance(x) for x in
+            filter(lambda x: x.teacher == value, teachers)), sep = '\n')
+    if command == 3:
+        print(*(print_performance(x) for x in
+            filter(lambda x: x.bus == value, students)), sep = '\n')
 
 
 def search_lastname(students, last_name, bus=False):
