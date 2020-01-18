@@ -5,7 +5,7 @@ import sys
 class Student:
     def __init__(self, last_name, first_name, grade, classroom,
                  bus, gpa):
-        self.first_name = first_name
+        self.first_name = first_name.strip()
         self.last_name = last_name
         self.grade = int(grade)
         self.classroom = int(classroom)
@@ -37,7 +37,7 @@ def parse_teacher_file(file_name):
     teachers = []
     with open(file_name) as f:
         for line in f:
-            data = line.split(',')
+            data = line.split(', ')
             #print(data)
             teachers.append(Teacher(*data))
     return teachers
@@ -66,7 +66,7 @@ def search_teacher_grade(grade):
     for x in teachers:
         for c in classes:
             if x.classroom == c:
-                print(x)
+                print('\t',x)
 
 #NR4
 #Command is Enrollments or E
@@ -92,57 +92,79 @@ def search_enrollments():
 def search_gpa_performance(command): 
     if command == 1:
         for i in range(7):
+            print(f'\tGrade {i}')
             data = map(lambda x: x.gpa, filter(lambda x: x.grade == i, students))
             analyze_gpa(data)
     if command == 2:
         classes = set(map(lambda x: x.classroom, teachers))
         for c in classes:
-            data = append(map(lambda x: x.gpa, filter(lambda x: x.classroom == c, students)))
+            print(f'\tClass {c}')
+            data = map(lambda x: x.gpa, filter(lambda x: x.classroom == c, students))
             analyze_gpa(data)
     if command == 3:
         bus = set(map(lambda x: x.bus, students))
         for b in bus:
+            print(f'\tBus {b}')
             data = map(lambda x: x.gpa, filter(lambda x: x.bus == b, students))
             analyze_gpa(data)
 
 def analyze_gpa(data):
+    data = list(data)
     def print_gpa(mean, median, mode):
-        print(f'\tmean: {mean}')
-        print(f'\tmedian: {median}')
-        print(f'\tmode: {mode}')
+        print(f'\t\tmean: {mean}')
+        print(f'\t\tmedian: {median}')
+        print(f'\t\tmode: {mode}')
 
     if len(data) == 0:
         print_gpa(0, 0, 0)
     else:
         mean = statistics.mean(data)
         median = statistics.median(data)
-        mode = statistics.mode(data)
+        try:
+            mode = statistics.mode(data)
+        except:
+            mode = None
         print_gpa(mean, median, mode)
 
 
-def search_lastname(students, last_name, bus=False):
+def search_lastname(students, teachers, last_name, bus=False):
     def print_student(x):
+        t = find_teacher(teachers, x.classroom)
         if bus:
             return f'\t{x.last_name}, {x.first_name}, {x.bus}'
-        return f'\t{x.last_name}, {x.first_name}, {x.grade}, {x.classroom}, {x.teacher_last_name}, {x.teacher_first_name}'
+        return f'\t{x.last_name}, {x.first_name}, {x.grade}, {x.classroom}, {t.last_name}, {t.first_name}'
     
     print(*(print_student(x) for x in
             filter(lambda x: x.last_name == last_name, students)), sep = '\n')
 
-def search_teacher(students, teacher_last_name):
-    print('\t', end='')
-    print(*filter(lambda x: x.teacher_last_name == teacher_last_name, students), sep="\n\t")
+def find_teacher(teachers, classroom):
+    t = list(filter(lambda x: x.classroom == classroom, teachers))
+    if len(t) == 0:
+        return Teacher()
+    return t[0]
 
-def search_grade(students, grade, high=None):
+def find_students(students, teachers, last_name):
+    t = list(filter(lambda x: x.last_name == last_name, teachers))
+    if len(t) == 0:
+        return list()
+    return filter(lambda x: x.classroom == t[0].classroom, students)
+
+def search_teacher(students, teachers, teacher_last_name):
+    print('\t', end='')
+    print(*find_students(students, teachers, teacher_last_name), sep="\n\t")
+
+def search_grade(students, teachers, grade, high=None):
 
     result = [x for x in students if x.grade == grade]
 
     if  len(result) != 0 and high != None and high:
         result = max(result, key=lambda x: x.gpa)
-        print(f'\t{result}: {result.bus}, {result.gpa}, {result.teacher_last_name}, {result.teacher_first_name}')
+        t = find_teacher(teachers, result.classroom)
+        print(f'\t{result}: {result.bus}, {result.gpa}, {t.last_name}, {t.first_name}')
     elif len(result) != 0 and high != None and not high:
         result = min(result, key=lambda x: x.gpa)
-        print(f'\t{result}: {result.bus}, {result.gpa}, {result.teacher_last_name}, {result.teacher_first_name}')
+        t = find_teacher(teachers, result.classroom)
+        print(f'\t{result}: {result.bus}, {result.gpa}, {t.last_name}, {t.first_name}')
     else:
         print('\t', end='')
         print(*result, sep="\n\t")
@@ -187,29 +209,24 @@ if __name__ == '__main__':
     command = [""]
 
     while command[0] not in ("Quit", "Q"):
-        """query = input("")
-        command = query.split("Enter in command >> ")
+        query = input("Enter in a command >> ")
+        command = query.split(" ")
 
         if any('#' in x for x in command) or (len(command) == 1 and not command[0].strip()):
             continue
         else:
             print(query)
-        """
-
-        #remove after done testing using command prompt
-        query = input("Enter in command >>")
-        command = query.split(" ")
 
         if len(command) <= 3 and command[0] in ("Student:", "S:"):
             if len(command) == 2:
-                search_lastname(students, command[1])
+                search_lastname(students, teachers, command[1])
             elif len(command) == 3 and command[2] in ("B", "Bus"):
-                search_lastname(students, command[1], True)
+                search_lastname(students, teachers, command[1], True)
             else:
                 invalidCommand()
 
         elif len(command) == 2 and command[0] in ("Teacher:", "T:"):
-            search_teacher(students, command[1])
+            search_teacher(students, teachers, command[1])
 
         elif len(command) == 2 and command[0] in ("Bus:", "B:"):
             try:
@@ -229,15 +246,15 @@ if __name__ == '__main__':
 
             if len(command) == 3:
                 if command[2] in ("High", "H"):
-                    search_grade(students, i, True)
+                    search_grade(students, teachers, i, True)
                 elif command[2] in ("Low", "L"):
-                    search_grade(students, i, False)
+                    search_grade(students, teachers, i, False)
                 elif command[2] in ("Teachers"):
                     search_teacher_grade(command[1])
                 else:
                     invalidCommand()
             else:
-                search_grade(students, i)
+                search_grade(students, teachers,  i)
 
         elif len(command) <= 2 and command[0] in ("Average:", "A:"):
             try:
@@ -256,11 +273,11 @@ if __name__ == '__main__':
             search_enrollments()
         elif len(command) == 2 and command[0] in ("Analyze:"):
             if command[1] == "Grade": 
-                search_gpa_performance("1")
+                search_gpa_performance(1)
             elif command[1] == "Teacher":
-                search_gpa_performance("2")
+                search_gpa_performance(2)
             elif command[1] == "Bus":
-                search_gpa_performance("3")
+                search_gpa_performance(3)
             else:
                 invalidCommand()
         elif len(command) == 3 and command[0] in ("Classroom:", "C:"):

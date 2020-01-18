@@ -2,3 +2,19 @@ Ty Farris and Caitlin Settles
 
 To run:
 	python3 schoolsearch.py
+
+NR1:  "C: [Number] Students" or "Classroom: [Number] Students"
+    E.g. C: 101 Students
+
+NR2: "C: [Number] Teachers" or "Classroom: [Number] Teachers"
+    E.g. C: 101 Teachers
+
+NR3: "G: [Number] Teachers" or "Grade: [Number] Teachers"
+E.g. G: 1 Teachers
+
+NR4: "Enrollments" or "E"
+    E.g. E
+
+NR5: "Analyze: [Grade|Teacher|Bus]"
+    E.g. Analyze: Grade
+
