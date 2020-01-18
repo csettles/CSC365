@@ -2,3 +2,20 @@ Ty Farris and Caitlin Settles
 
 To run:
 	python3 schoolsearch.py
+
+New commands:
+NR1: Given a classroom number, list all students assigned to it.
+   "C: [Number] Students" or "Classroom: [Number] Students"
+
+NR2: Given a classroom number, find the teacher(s) teaching in it.
+   "C: [Number] Teachers" or "Classroom: [Number] Teachers"
+
+NR3: Given a grade, find all teachers who teach it. 
+   "G: [Number] Teachers" or "Grade: [Number] Teachers"
+
+NR4: Report the enrollments broken down by classroom. 
+   "Enrollments" or "E"
+
+NR5: To be able to analyze whether student GPAs are affected by the student's
+grades, student's teachers or the bus routes the students are on.
+   "Analyze: [Grade|Teacher|Bus]"
