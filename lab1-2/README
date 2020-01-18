@@ -3,6 +3,7 @@ Ty Farris and Caitlin Settles
 To run:
 	python3 schoolsearch.py
 
+<<<<<<< HEAD
 New commands:
 NR1: Given a classroom number, list all students assigned to it.
    "C: [Number] Students" or "Classroom: [Number] Students"
@@ -19,3 +20,20 @@ NR4: Report the enrollments broken down by classroom.
 NR5: To be able to analyze whether student GPAs are affected by the student's
 grades, student's teachers or the bus routes the students are on.
    "Analyze: [Grade|Teacher|Bus]"
+=======
+NR1:  "C: [Number] Students" or "Classroom: [Number] Students"
+    E.g. C: 101 Students
+
+NR2: "C: [Number] Teachers" or "Classroom: [Number] Teachers"
+    E.g. C: 101 Teachers
+
+NR3: "G: [Number] Teachers" or "Grade: [Number] Teachers"
+E.g. G: 1 Teachers
+
+NR4: "Enrollments" or "E"
+    E.g. E
+
+NR5: "Analyze: [Grade|Teacher|Bus]"
+    E.g. Analyze: Grade
+
+>>>>>>> 4d1f27d5411226c50bcbc8c407f17d5f3845f2c9

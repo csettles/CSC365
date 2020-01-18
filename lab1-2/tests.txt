@@ -468,16 +468,197 @@ Q: 1
     #Q[uit]
 Q:
 
+=============================
+
+#TC-49
+#Test Requirements NR1
+#long form command name, students by classroom
+#Expected Output: DURAND, CARLEE
+
+C: 101 Students
+
+#TC-49
+#Test Requirements NR1
+#long form command name, teachers by classroom
+#Expected Output: COOL, REUBEN
+
+C: 101 Teachers
+
+#TC-49
+#Test Requirements NR1
+#long form command name, teachers by grade
+#Expected Output: FALKER, ADOLPH
+
+G: 1 Teachers
+
+#TC-49
+#Test Requirements NR1
+#long form command name, enrollment by grade level
+#Expected Output:
+#classroom: number of students
+#    107: 7
+#    109: 5
+#    102: 5
+#    104: 2
+#    111: 9
+#    110: 2
+#    105: 6
+#    108: 11
+#    106: 2
+#    112: 8
+#    103: 2
+#    101: 1
+
+Enrollments
+
+#TC-49
+#Test Requirements NR1
+#short form command name, enrollment by grade level
+#Expected Output:
+#classroom: number of students
+#    107: 7
+#    109: 5
+#    102: 5
+#    104: 2
+#    111: 9
+#    110: 2
+#    105: 6
+#    108: 11
+#    106: 2
+#    112: 8
+#    103: 2
+#    101: 1
+
+E
+
+#TC-49
+#Test Requirements NR1
+#long form command name, gpa by teacher/classroom
+#Expected Output:
+    # Class 101
+    #     mean: 2.91
+    #     median: 2.91
+    #     mode: 2.91
+    # Class 102
+    #     mean: 2.976
+    #     median: 2.93
+    #     mode: None
+    # Class 103
+    #     mean: 2.995
+    #     median: 2.995
+    #     mode: None
+    # Class 104
+    #     mean: 2.9
+    #     median: 2.9
+    #     mode: None
+    # Class 105
+    #     mean: 2.913333333333333
+    #     median: 2.83
+    #     mode: 3.12
+    # Class 106
+    #     mean: 3.09
+    #     median: 3.09
+    #     mode: None
+    # Class 107
+    #     mean: 3.0142857142857142
+    #     median: 3.07
+    #     mode: None
+    # Class 108
+    #     mean: 2.9545454545454546
+    #     median: 2.93
+    #     mode: None
+    # Class 109
+    #     mean: 2.96
+    #     median: 2.88
+    #     mode: None
+    # Class 110
+    #     mean: 3.17
+    #     median: 3.17
+    #     mode: None
+    # Class 111
+    #     mean: 2.962222222222222
+    #     median: 2.89
+    #     mode: None
+    # Class 112
+    #     mean: 2.9850000000000003
+    #     median: 2.9850000000000003
+    #     mode: None
+
+Analyze: Teacher
+
+#TC-49
+#Test Requirements NR1
+#long form command name, gpa by grade level
+#Expected Output:
+    # Grade 0
+    #     mean: 0
+    #     median: 0
+    #     mode: 0
+    # Grade 1
+    #     mean: 2.995
+    #     median: 2.995
+    #     mode: None
+    # Grade 2
+    #     mean: 2.946153846153846
+    #     median: 2.92
+    #     mode: None
+    # Grade 3
+    #     mean: 3.048888888888889
+    #     median: 3.11
+    #     mode: 3.11
+    # Grade 4
+    #     mean: 2.9513333333333334
+    #     median: 2.97
+    #     mode: 3.12
+    # Grade 5
+    #     mean: 0
+    #     median: 0
+    #     mode: 0
+    # Grade 6
+    #     mean: 2.9771428571428573
+    #     median: 2.93
+    #     mode: 2.88
+
+Analyze: Grade
+
+#TC-49
+#Test Requirements NR1
+#long form command name, gpa by bus route
+#Expected Output:
+    # Bus 0
+    #     mean: 2.9525
+    #     median: 2.88
+    #     mode: 2.88
+    # Bus 51
+    #     mean: 3.02
+    #     median: 3.025
+    #     mode: None
+    # Bus 52
+    #     mean: 2.885
+    #     median: 2.87
+    #     mode: None
+    # Bus 53
+    #     mean: 3.055555555555556
+    #     median: 3.1
+    #     mode: 3.12
+    # Bus 54
+    #     mean: 2.941666666666667
+    #     median: 2.925
+    #     mode: None
+    # Bus 55
+    #     mean: 3.0366666666666666
+    #     median: 3.1
+    #     mode: None
+    # Bus 56
+    #     mean: 2.9216666666666664
+    #     median: 2.885
+    #     mode: None
+
+Analyze: Bus
+
 #TC-48
 #Test Requirements R12
-#long form command name, existing grade level
+#long form command name, quit
 #Expected Output:
 
 Quit
-
-#TC-49
-#Test Requirements R12
-#short form command name, existing grade level
-#Expected Output:
-
-Q
