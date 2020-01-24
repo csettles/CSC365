@@ -20,10 +20,11 @@ CREATE TABLE airports(
 
 CREATE TABLE flights(
    Airline INTEGER NOT NULL,
-   FlightNo INTEGER NOT NULL PRIMARY KEY,
+   FlightNo INTEGER NOT NULL,
    SourceAirport VARCHAR(3) NOT NULL,
    DestAirport VARCHAR(3) NOT NULL,
    FOREIGN KEY (SourceAirport) REFERENCES airports(AirportCode),
    FOREIGN KEY (DestAirport) REFERENCES airports(AirportCode),
-   FOREIGN KEY (Airline) REFERENCES airlines(Id)
+   FOREIGN KEY (Airline) REFERENCES airlines(Id),
+   PRIMARY KEY (FlightNo, Airline)
 );

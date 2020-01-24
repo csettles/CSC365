@@ -40,6 +40,7 @@ if __name__== "__main__":
 
         for row in reader:
             for i in range(len(row)):
+                row[i] = row[i].strip(" ")
                 row[i] = '\'' + row[i] + '\''
 
             if len(row) > 0:
