@@ -1,0 +1,27 @@
+--rooms and reservations
+DROP TABLE IF EXISTS rooms;
+DROP TABLE IF EXISTS reservations;
+
+CREATE TABLE rooms(
+   RoomId VARCHAR(3) NOT NULL PRIMARY KEY,
+   RoomName VARCHAR(50) NOT NULL,
+   Beds INTEGER NOT NULL,
+   BedType VARCHAR(10) NOT NULL,
+   MaxOccupancy INTEGER NOT NULL,
+   BasePrice INTEGER NOT NULL,
+   Decor VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE reservations(
+   Code INTEGER NOT NULL PRIMARY KEY,
+   Room VARCHAR(3) NOT NULL,
+   CheckIn DATE NOT NULL,
+   CheckOut DATE NOT NULL,
+   Rate DECIMAL(5, 2) NOT NULL,
+   LastName VARCHAR(30) NOT NULL,
+   FirstName VARCHAR(30) NOT NULL,
+   Adults INTEGER NOT NULL,
+   Kids INTEGER NOT NULL,
+
+   FOREIGN KEY(Room) REFERENCES rooms(RoomId)
+);
