@@ -1,6 +1,6 @@
 --rooms and reservations
-DROP TABLE IF EXISTS rooms;
 DROP TABLE IF EXISTS reservations;
+DROP TABLE IF EXISTS rooms;
 
 CREATE TABLE rooms(
    RoomId VARCHAR(3) NOT NULL PRIMARY KEY,
@@ -22,6 +22,6 @@ CREATE TABLE reservations(
    FirstName VARCHAR(30) NOT NULL,
    Adults INTEGER NOT NULL,
    Kids INTEGER NOT NULL,
-
    FOREIGN KEY(Room) REFERENCES rooms(RoomId)
 );
+   --UNIQUE(Room, CheckIn, CheckOut)
