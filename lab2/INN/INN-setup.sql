@@ -22,6 +22,7 @@ CREATE TABLE reservations(
    FirstName VARCHAR(30) NOT NULL,
    Adults INTEGER NOT NULL,
    Kids INTEGER NOT NULL,
-   FOREIGN KEY(Room) REFERENCES rooms(RoomId)
+   FOREIGN KEY(Room) REFERENCES rooms(RoomId),
+   UNIQUE(Room, CheckIn, CheckOut)
 );
-   --UNIQUE(Room, CheckIn, CheckOut)
+

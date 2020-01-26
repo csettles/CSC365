@@ -40,6 +40,7 @@ if __name__== "__main__":
                 row[i] = row[i].strip()
                 if not row[i].isdigit() and not isFloat(row[i]):
                     try:
+
                         row[i] = '\"' + datetime.datetime.strptime(row[i], "%d-%b-%y").strftime("%Y-%m-%d") + '\"'
                     except:
                         row[i] = '\"' + row[i] + '\"'
