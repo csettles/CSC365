@@ -10,12 +10,14 @@ DROP TABLE IF EXISTS bands;
 CREATE TABLE bands(
    Id INTEGER NOT NULL PRIMARY KEY,
    Firstname VARCHAR(20) NOT NULL,
-   Lastname VARCHAR(20) NOT NULL
+   Lastname VARCHAR(20) NOT NULL,
+   UNIQUE(Firstname, Lastname)
 );
 
 CREATE TABLE songs(
    SongId INTEGER NOT NULL PRIMARY KEY,
-   Title VARCHAR(50) NOT NULL
+   Title VARCHAR(50) NOT NULL,
+   UNIQUE (Title)
 );
 
 CREATE TABLE albums(
@@ -23,7 +25,8 @@ CREATE TABLE albums(
    Title VARCHAR(50) NOT NULL,
    Year INTEGER NOT NULL,
    Label VARCHAR(50) NOT NULL,
-   Type VARCHAR(50) NOT NULL
+   Type VARCHAR(50) NOT NULL,
+   UNIQUE (Title, Year, Label)
 );
 
 CREATE TABLE instruments(
