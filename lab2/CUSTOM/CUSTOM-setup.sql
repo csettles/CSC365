@@ -1,0 +1,30 @@
+--teams, players and characteristics of fifa players
+DROP TABLE IF EXISTS characteristics;
+DROP TABLE IF EXISTS players;
+DROP TABLE IF EXISTS teams;
+
+CREATE TABLE teams(
+   Id INTEGER NOT NULL,
+   TeamName VARCHAR(200) NOT NULL PRIMARY KEY
+);
+
+CREATE TABLE players(
+   SoFifaId INTEGER NOT NULL PRIMARY KEY,
+   Name VARCHAR(100) NOT NULL,
+   Nationality VARCHAR(50) NOT NULL,
+   Team VARCHAR(200) NOT NULL,
+   TeamPosition VARCHAR(10) NOT NULL,
+   FOREIGN KEY (Team) REFERENCES teams(TeamName)
+);
+
+CREATE TABLE characteristics(
+   Id INTEGER NOT NULL,
+   Age INTEGER NOT NULL,
+   Weight INTEGER NOT NULL,
+   Height INTEGER NOT NULL,
+   BodyType VARCHAR(20) NOT NULL,
+   PRIMARY KEY(Age, Weight, Height),
+   FOREIGN KEY (Id) REFERENCES players(SoFifaId)
+);
+
+

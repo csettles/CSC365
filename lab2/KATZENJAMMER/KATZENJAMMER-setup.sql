@@ -1,4 +1,4 @@
---albumss, band, instruments, performance, songs, tracklists, vocals
+--albums, band, instruments, performance, songs, tracklists, vocals
 DROP TABLE IF EXISTS tracklists;
 DROP TABLE IF EXISTS vocals;
 DROP TABLE IF EXISTS performance;
