@@ -5,7 +5,8 @@ DROP TABLE IF EXISTS teams;
 
 CREATE TABLE teams(
    Id INTEGER NOT NULL,
-   TeamName VARCHAR(200) NOT NULL PRIMARY KEY
+   TeamName VARCHAR(200) NOT NULL PRIMARY KEY,
+   UNIQUE (Id)
 );
 
 CREATE TABLE players(
@@ -14,7 +15,8 @@ CREATE TABLE players(
    Nationality VARCHAR(50) NOT NULL,
    Team VARCHAR(200) NOT NULL,
    TeamPosition VARCHAR(10) NOT NULL,
-   FOREIGN KEY (Team) REFERENCES teams(TeamName)
+   FOREIGN KEY (Team) REFERENCES teams(TeamName),
+   UNIQUE(Name, Team, TeamPosition)
 );
 
 CREATE TABLE characteristics(
@@ -23,7 +25,8 @@ CREATE TABLE characteristics(
    Weight INTEGER NOT NULL,
    Height INTEGER NOT NULL,
    BodyType VARCHAR(20) NOT NULL,
-   PRIMARY KEY(Age, Weight, Height),
+   BirthDate DATE NOT NULL,
+   PRIMARY KEY(Age, Weight, Height, BirthDate),
    FOREIGN KEY (Id) REFERENCES players(SoFifaId)
 );
 
