@@ -1,0 +1,29 @@
+#Ty Farris
+#CSC365 - Lab 2
+
+a) The source of data comes from: https://www.kaggle.com/stefanoleone992/fifa-20-complete-player-dataset 
+   The person who produced the data: Stefano Leone
+   The data is pulled from: players_15.csv
+
+b) There are three tables that describe the teams, players and characteristics. 
+
+   1. Teams 
+      Contains a list of teams that can be found in FIFA with a number associated to each team.
+
+   2. Players
+      Contains a list of players with their online Fifa ID, name(includes first and last), nationality, team and team position.
+      The players belong to a certain team in the Teams table.
+
+   3.Characteristics
+      Contains a list of players with their online Fifa ID, age, weight, height, body type and birth date.
+      The characteristics belong to a a certain player in the players table.
+
+c) Along the way, I was trying to map a foreign key to a non-primary key. I also came across the error where my data had duplicate entries for a primary key.
+
+d) Non-trivial information requests:
+
+   1. Find the players who belong to the team RealMadrid
+   2. Find the players who are 27 pounds.
+   3. Find A. Robben's characteristics.
+
+
