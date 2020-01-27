@@ -4,9 +4,9 @@ DROP TABLE IF EXISTS players;
 DROP TABLE IF EXISTS teams;
 
 CREATE TABLE teams(
-   Id INTEGER NOT NULL,
-   TeamName VARCHAR(200) NOT NULL PRIMARY KEY,
-   UNIQUE (Id)
+   Id INTEGER NOT NULL PRIMARY KEY,
+   TeamName VARCHAR(200) NOT NULL,
+   UNIQUE (TeamName)
 );
 
 CREATE TABLE players(
@@ -15,8 +15,7 @@ CREATE TABLE players(
    Nationality VARCHAR(50) NOT NULL,
    Team VARCHAR(200) NOT NULL,
    TeamPosition VARCHAR(10) NOT NULL,
-   FOREIGN KEY (Team) REFERENCES teams(TeamName),
-   UNIQUE(Name, Team, TeamPosition)
+   FOREIGN KEY (Team) REFERENCES teams(TeamName)
 );
 
 CREATE TABLE characteristics(
