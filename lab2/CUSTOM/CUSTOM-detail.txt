@@ -22,8 +22,8 @@ c) Along the way, I was trying to map a foreign key to a non-primary key. I also
 
 d) Non-trivial information requests:
 
-   1. Find the players who belong to the team RealMadrid
-   2. Find the players who are 27 pounds.
-   3. Find A. Robben's characteristics.
+   1. Find the players who belong to the team RealMadrid and are 27 pounds.
+   2. List the players who are from Argentina with a height greater than the average height from all countries.
+   3. Find the median height of all the players on the team Brazil.
 
 
