@@ -11,31 +11,31 @@ b) There are three tables that describe the teams, players and characteristics.
       Contains a list of teams that can be found in FIFA with a number associated to each team.
 
       -------Attributes:-------
-      Id: Unique Id that is associated with each FIFA team
-      TeamName: Name of the team that plays in FIFA
+      Id:         Unique Id that is associated with each FIFA team
+      TeamName:   Name of the team that plays in FIFA
 
    2. Players.csv
       Contains a list of players with their online Fifa ID, name(includes first and last), nationality, team and team position.
       The players belong to a certain team in the Teams table.
 
       -------Attributes:-------
-      SoFifaId: A unique ID associated with each player
-      Name: Abbreviated first name and last name of the player
-      Nationality: nationality of the player
-      Team: The FIFA team associated with the player
-      TeamPosition: An abbreviated version of the player's position on the team
+      SoFifaId:      A unique ID associated with each player
+      Name:          Abbreviated first name and last name of the player
+      Nationality:   Nationality of the player
+      Team:          The FIFA team associated with the player (See Teams.csv)
+      TeamPosition:  An abbreviated version of the player's position on the team
 
    3. Characteristics.csv
       Contains a list of players with their online Fifa ID, age, weight, height, body type and birth date.
       The characteristics belong to a a certain player in the players table.
 
       -------Attributes:-------
-      Id:
-      Age: The age of the player
-      Weight: The weight of the player in kg
-      Height: The height of the player in cm
-      BodyType: The physical body type of the player
-      BirthDate: The birth date of the player
+      Id:         A Unique ID associated with each player (see Players.csv)
+      Age:        The age of the player
+      Weight:     The weight of the player in kg
+      Height:     The height of the player in cm
+      BodyType:   The physical body type of the player
+      BirthDate:  The birth date of the player
 
 c) Along the way, I was trying to map a foreign key to a non-key attribute. I also came across the error where my data had duplicate entries for a primary key.
 
