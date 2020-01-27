@@ -23,8 +23,7 @@ CREATE TABLE albums(
    Title VARCHAR(50) NOT NULL,
    Year INTEGER NOT NULL,
    Label VARCHAR(50) NOT NULL,
-   Type VARCHAR(50) NOT NULL,
-   UNIQUE (Title, Year, Label)
+   Type VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE instruments(
