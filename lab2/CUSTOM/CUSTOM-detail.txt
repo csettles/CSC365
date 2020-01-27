@@ -18,7 +18,7 @@ b) There are three tables that describe the teams, players and characteristics.
       Contains a list of players with their online Fifa ID, age, weight, height, body type and birth date.
       The characteristics belong to a a certain player in the players table.
 
-c) Along the way, I was trying to map a foreign key to a non-primary key. I also came across the error where my data had duplicate entries for a primary key.
+c) Along the way, I was trying to map a foreign key to a non-key attribute. I also came across the error where my data had duplicate entries for a primary key.
 
 d) Non-trivial information requests:
 
