@@ -19,13 +19,12 @@ CREATE TABLE players(
 );
 
 CREATE TABLE characteristics(
-   Id INTEGER NOT NULL,
+   Id INTEGER NOT NULL PRIMARY KEY,
    Age INTEGER NOT NULL,
    Weight INTEGER NOT NULL,
    Height INTEGER NOT NULL,
    BodyType VARCHAR(20) NOT NULL,
    BirthDate DATE NOT NULL,
-   PRIMARY KEY(Age, Weight, Height, BirthDate),
    FOREIGN KEY (Id) REFERENCES players(SoFifaId)
 );
 
